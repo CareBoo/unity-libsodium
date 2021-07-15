@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd ../libsodium
+cd libsodium
 ./dist-build/macos.sh
