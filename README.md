@@ -7,7 +7,7 @@ I'm just using this to build libsodium via Github Actions, since I do not own a 
 2. Click on the "Create Plugins" workflow
 3. Manually run the workflow by clicking on "Run workflow" button
 4. Enter the libsodium tag you'd like to build. (hint: this is the version)
-5. The workflow will run, and likely fail, because this repository is meant to build 1.0.18... and the libsodium folks like to change up the APIs.
+5. The workflow will run, and likely fail, because this repository is meant to build 1.0.18...
 6. Wait for me to add libsodium as a submodule to this repo so the version is pinned and any update to the master branch triggers a build so you don't have to do all this stuff anymore.
 
 Useful references:
