@@ -1,0 +1,54 @@
+name: Create Plugins
+
+on:
+  workflow_dispatch:
+    inputs:
+      libsodium_tag:
+        description: 'Tag describing release of Libsodium to build'
+        required: true
+
+jobs:
+  build:
+    name: Build Libsodium ${{ github.event.inputs.libsodium_tag }} Plugin for ${{ matrix.platform }}
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        platform: [android-armv7, android-arm64, macos, ios]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: libsodium
+          repository: jedisct1/libsodium
+          ref: refs/tags/${{ github.events.inputs.libsodium_tag }}
+
+      - name: Update Hombrew
+        run: |
+          brew update --preinstall
+          cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/foo.rb"
+
+      - name: Install Build Deps
+        run: |
+          packages='libtool autoconf automake wget'
+          brew update
+          for pkg in libtool autoconf automake wget; do
+            if brew list -1 | grep -q "^${pkg}\&"; then
+              echo "Package '$pkg' is installed"
+            else
+              echo "Package '$pkg' is not installed"
+              brew install $pkg
+            fi
+          done
+          brew upgrade ${packages} || true
+
+      - name: Setup Libsodium for development
+        run: ./libsodium/autogen.sh -s
+
+      - name: Build ${{ matrix.platform }}
+        run: ./build_scripts/${{ matrix.platform }}.sh
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.platform }}_build
+          path: output/builds
