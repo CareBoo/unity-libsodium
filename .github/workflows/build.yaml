@@ -16,7 +16,11 @@ jobs:
         platform: [android-armv7, android-arm64, macos, ios]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Checkout Libsodium
+        uses: actions/checkout@v2
         with:
           path: libsodium
           repository: jedisct1/libsodium
