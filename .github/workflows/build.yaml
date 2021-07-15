@@ -22,11 +22,6 @@ jobs:
           repository: jedisct1/libsodium
           ref: refs/tags/${{ github.event.inputs.libsodium_tag }}
 
-      - name: Update Hombrew
-        run: |
-          brew update --preinstall
-          cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/foo.rb"
-
       - name: Install Build Deps
         run: |
           packages='libtool autoconf automake wget'
