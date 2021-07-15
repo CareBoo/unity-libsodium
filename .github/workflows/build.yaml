@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Libsodium ${{ github.event.inputs.libsodium_tag }} Plugin for ${{ matrix.platform }}
+    name: ${{ matrix.platform }} Libsodium ${{ github.event.inputs.libsodium_tag }}
     runs-on: macos-latest
     strategy:
       matrix:
@@ -37,7 +37,9 @@ jobs:
           brew upgrade ${packages} || true
 
       - name: Setup Libsodium for development
-        run: ./libsodium/autogen.sh -s
+        run: |
+          cd libsodium
+          ./autogen.sh -s
 
       - name: Build ${{ matrix.platform }}
         run: ./build_scripts/${{ matrix.platform }}.sh
