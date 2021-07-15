@@ -20,7 +20,7 @@ jobs:
         with:
           path: libsodium
           repository: jedisct1/libsodium
-          ref: refs/tags/${{ github.events.inputs.libsodium_tag }}
+          ref: refs/tags/${{ github.event.inputs.libsodium_tag }}
 
       - name: Update Hombrew
         run: |
