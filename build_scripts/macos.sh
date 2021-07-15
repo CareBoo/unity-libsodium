@@ -2,7 +2,12 @@
 
 cd libsodium
 if [ -f "dist-build/macos.sh" ]; then
-    ./dist-build/macos.sh
+    mac_name="macos"
 else
-    ./dist-build/osx.sh
+    mac_name="osx"
 fi
+./dist-build/${mac_name}.sh
+
+cd -
+mkdir -p output/builds/MacOS
+cp libsodium/libsodium-${mac_name}/lib/libsodium.*.dylib output/builds/MacOS/sodium.bundle
