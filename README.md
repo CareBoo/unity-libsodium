@@ -10,6 +10,8 @@ I'm just using this to build libsodium via Github Actions, since I do not own a 
 5. The workflow will run, and likely fail, because this repository is meant to build 1.0.18...
 6. Wait for me to add libsodium as a submodule to this repo so the version is pinned and any update to the main branch triggers a build so you don't have to do all this stuff anymore.
 
+Builds are uploaded as artifacts from the run action, so just wait patiently and the artifacts will be uploaded.
+
 Useful references:
 - https://github.com/netpyoung/unity.libsodium
 - https://github.com/jedisct1/libsodium
