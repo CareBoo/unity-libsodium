@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "building macos"
-"$(dirname "$0")/../libsodium/dist-build/macos.sh"
+./$(dirname "$0")/../libsodium/dist-build/macos.sh
