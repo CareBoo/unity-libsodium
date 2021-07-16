@@ -1,15 +1,13 @@
 name: Create Plugins
 
 on:
-  workflow_dispatch:
-    inputs:
-      libsodium_tag:
-        description: 'Tag describing release of Libsodium to build'
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-    name: ${{ matrix.platform }} Libsodium ${{ github.event.inputs.libsodium_tag }}
+    name: ${{ matrix.platform }} Libsodium
     runs-on: macos-latest
     strategy:
       matrix:
@@ -18,13 +16,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
-      - name: Checkout Libsodium
-        uses: actions/checkout@v2
         with:
-          path: libsodium
-          repository: jedisct1/libsodium
-          ref: refs/tags/${{ github.event.inputs.libsodium_tag }}
+          submodules: recursive
 
       - name: Install Build Deps
         run: |
