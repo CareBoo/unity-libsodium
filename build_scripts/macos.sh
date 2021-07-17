@@ -10,4 +10,4 @@ fi
 
 cd -
 mkdir -p output/builds/MacOS
-cp libsodium/libsodium-${mac_name}/lib/libsodium.*.dylib output/builds/MacOS/sodium.bundle
+cp libsodium/libsodium-${mac_name}/lib/libsodium.*.dylib output/builds/sodium.bundle

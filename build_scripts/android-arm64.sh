@@ -15,4 +15,4 @@ cd libsodium
 cd -
 
 mkdir -p output/builds/Android/arm64
-mv libsodium/libsodium-android-armv8-a/lib/libsodium.a libsodium/libsodium-android-armv8-a/lib/libsodium.so output/builds/Android/arm64
+mv libsodium/libsodium-android-armv8-a/lib/libsodium.a libsodium/libsodium-android-armv8-a/lib/libsodium.so output/builds

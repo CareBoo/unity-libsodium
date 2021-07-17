@@ -5,4 +5,4 @@ cd libsodium
 
 cd -
 mkdir -p output/builds/iOS
-cp libsodium/libsodium-ios/lib/libsodium.a output/builds/iOS/libsodium.a
+cp libsodium/libsodium-ios/lib/libsodium.a output/builds/libsodium.a
