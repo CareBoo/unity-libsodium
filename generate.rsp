@@ -4,7 +4,6 @@ generate-tests-nunit
 generate-aggressive-inlining
 multi-file
 --file
-libsodium/src/libsodium/include/sodium.h
 libsodium/src/libsodium/include/sodium/core.h
 libsodium/src/libsodium/include/sodium/crypto_aead_aes256gcm.h
 libsodium/src/libsodium/include/sodium/crypto_aead_chacha20poly1305.h
