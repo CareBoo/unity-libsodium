@@ -66,7 +66,7 @@ libsodium/src/libsodium/include/sodium/randombytes_sysrandom.h
 libsodium/src/libsodium/include/sodium/runtime.h
 libsodium/src/libsodium/include/sodium/utils.h
 --methodClassName
-libsodium
+sodium
 --namespace
 CareBoo.Libsodium.Interop
 --output
