@@ -3,6 +3,10 @@ compatible-codegen
 generate-tests-nunit
 generate-aggressive-inlining
 multi-file
+--language
+c
+-std
+c17
 --file
 libsodium/src/libsodium/include/sodium/core.h
 libsodium/src/libsodium/include/sodium/crypto_aead_aes256gcm.h
@@ -72,3 +76,5 @@ CareBoo.Libsodium.Interop
 ./generated_src/CareBoo.Libsodium/Interop
 --test-output
 ./generated_src/CareBoo.Libsodium.Tests/InteropTests
+--libraryPath
+libsodium
