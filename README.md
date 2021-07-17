@@ -8,3 +8,4 @@ Useful references:
 - https://github.com/netpyoung/unity.libsodium
 - https://github.com/jedisct1/libsodium
 - https://github.com/microsoft/ClangSharp
+- https://github.com/ektrah/nsec
