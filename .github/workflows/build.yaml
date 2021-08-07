@@ -10,6 +10,7 @@ jobs:
     name: Build ${{ matrix.platform }}
     runs-on: ${{ matrix.host }}
     strategy:
+      fail-fast: false
       matrix:
         host: [maxos-latest]
         platform: [android-armv7, android-arm64, macos, ios, win32, win64]
