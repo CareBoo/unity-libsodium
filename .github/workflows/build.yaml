@@ -7,11 +7,15 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.platform }} Libsodium
-    runs-on: macos-latest
+    name: Build ${{ matrix.platform }}
+    runs-on: ${{ matrix.host }}
     strategy:
       matrix:
+        host: [maxos-latest]
         platform: [android-armv7, android-arm64, macos, ios, win32, win64]
+        include:
+          - host: ubuntu-latest
+            platform: linux64
 
     steps:
       - name: Checkout Repository
