@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: [maxos-latest]
+        host: [macos-latest]
         platform: [android-armv7, android-arm64, macos, ios, win32, win64]
         include:
           - host: ubuntu-latest
