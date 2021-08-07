@@ -17,6 +17,8 @@ jobs:
         include:
           - host: ubuntu-latest
             platform: linux64
+          - host: ubuntu-latest
+            platform: linux32
 
     steps:
       - name: Checkout Repository
