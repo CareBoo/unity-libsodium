@@ -1,3 +1,5 @@
 generated_src
 .DS_Store
 output
+android-ndk
+temp_dir
