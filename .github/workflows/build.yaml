@@ -136,3 +136,25 @@ jobs:
         with:
           name: build-android-aar
           path: libsodium/libsodium-*.aar
+
+  build-amalgam:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install Zig
+        uses: goto-bus-stop/setup-zig@d866436887ad1b24590684f9d00480376663dd36
+        with:
+          version: 0.11.0
+      - name: init version
+        run: |
+          zig build
+        working-directory: libsodium
+      - name: build
+        run: |
+          ./amalgamate.py -c amalgamate.json -s libsodium/src/libsodium
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-amalgam
+          path: sodium.c
