@@ -3,3 +3,5 @@ generated_src
 output
 android-ndk
 temp_dir
+sodium.h
+sodium.c

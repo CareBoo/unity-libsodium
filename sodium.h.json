@@ -1,0 +1,8 @@
+{
+    "project": "sodium.h",
+    "target": "sodium.h",
+    "sources": [
+        "include/sodium.h"
+    ],
+    "include_paths": []
+}
