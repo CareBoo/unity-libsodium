@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-windows:
+  build-windows-x86:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: buildbase.bat
@@ -26,6 +26,28 @@ jobs:
           name: build-win-x86
           path: libsodium/bin/Win32/Release/v143/dynamic/libsodium.dll
 
+  build-windows-arm:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install Zig
+        uses: goto-bus-stop/setup-zig@d866436887ad1b24590684f9d00480376663dd36
+        with:
+          version: 0.11.0
+      - name: build
+        run: |
+          zig build -Doptimize=ReleaseFast -Dtarget=aarch64-windows
+        working-directory: libsodium
+      - name: tests
+        run: cd zig-out/bin && ./run.sh
+        working-directory: libsodium
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-win-aarch64
+          path: libsodium/zig-out/lib/sodium_shared.dll
+
   build-linux-glibc:
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +55,7 @@ jobs:
         uses: goto-bus-stop/setup-zig@d866436887ad1b24590684f9d00480376663dd36
         with:
           version: 0.11.0
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: build
@@ -51,7 +73,7 @@ jobs:
   build-macos-x64:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: configure
@@ -74,7 +96,7 @@ jobs:
   build-macos-arm64:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: configure
@@ -94,7 +116,7 @@ jobs:
   build-android:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: Update packages list
