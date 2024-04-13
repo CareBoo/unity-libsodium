@@ -137,7 +137,7 @@ jobs:
           name: build-android-aar
           path: libsodium/libsodium-*.aar
 
-  build-amalgam:
+  build-flattened:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -153,8 +153,8 @@ jobs:
         working-directory: libsodium
       - name: build
         run: |
-          ./amalgamate.py -c amalgamate.json -s libsodium/src/libsodium
+          python flatten_il2cpp.py libsodium/src/libsodium il2cpp
       - uses: actions/upload-artifact@v3
         with:
-          name: build-amalgam
-          path: sodium.c
+          name: build-il2cpp
+          path: il2cpp
